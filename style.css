@@ -3,11 +3,12 @@
 }
 h1 {
     text-align: center;
-    background: darkgrey;
+    background: black;
     font-family: Arial, Helvetica, sans-serif;
     height: 100px;
     margin-top: 0;
     font-size: 40px;
+    color: white;
 }
 
 .col1 {
@@ -15,7 +16,7 @@ h1 {
     width: 300px;
     height: 650px;
     padding: 15px;
-    margin: 10px 15px 0 15px;
+    margin: 0 15px;
 }
 
 .col2 {
@@ -24,11 +25,26 @@ h1 {
     width: 70vw;
 }
 
+label {
+    font-family: Arial, Helvetica, sans-serif;
+}
+input {
+    height: 30px;
+    font-size: 20px;
+}
+
+button {
+    height: 30px;
+}
+
 .row1 {
     border: 2px darkgray solid;
-    height: 500px;
-    margin: 10px;
-    padding: 15px;
+    height: 350px;
+    width: 930px;
+    margin: 5px;
+    padding: 10px;
+    border-radius: 10px;
+
 }
 
 .row2 {
@@ -36,38 +52,28 @@ h1 {
     
 }
 
-#col-1 {
-    width: 150px;
-    height: 200px;
-    background: lightseagreen;
-    margin: 10px;
+h3 {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 25px;
 }
-#col-2 {
-    width: 150px;
-    height: 200px;
-    background: lightseagreen;
-    margin: 10px;
 
-}
-#col-3 {
-    width: 150px;
-    height: 200px;
-    background: lightseagreen;
+.card {
+    width: 175px;
+    height: 210px;
+    background: blue;
     margin: 10px;
+    border-radius: 10px;
+    display: inline-flex;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 5px;
 }
-    
-#col-4 {
-    width: 150px;
-    height: 200px;
-    background: lightseagreen;
-    margin: 10px;
 
+p {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
 }
-    
-#col-5 {
-    width: 150px;
-    height: 200px;
-    background: lightseagreen;
-    margin: 10px;
 
+#dispText {
+    font-size: 40px;
 }

@@ -1,29 +1,46 @@
-var queryURL = "http://api.openweathermap.org/data/2.5/forecast?id=524901&APPID=da9420b87d29698294d717ff1b782d01";
-var cityName = $(".userText").text.val;
+var cityArray = [];
+var cityStorage = localStorage.getItem('savedCity');
+// use if statement to see if city storage is not null, then push city storage to cityArray.  has to be done 1 item at a time (use for loop on city storage and push 1 item at a time).
+// make sure to stringify cityArray before saving to localStorage then parse it when we return it on line 2 (JSON strigify and parse)
+function oneDay(cityName){
 
+var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&appid=da9420b87d29698294d717ff1b782d01"
 $.ajax({
-    url: queryURL,
-    method: "GET"
-  }).then(function(response) {
-    var tempElement = $("<p>");response.Temp;
-    var humidity = response.Humidity;
-    var windSpeed = response.Wind;
-    var uvIndex = response.uvIndex;
-    console.log(response);
+  url: queryURL,
+  method: "GET"
+}).then(function(response) {
+  // Place results into designated HTML element
+  var temperature =((response.main.temp) - 273.15) * 1.8 + 32;
+  temperature = temperature.toFixed();
+  var humid = ((response.main.humidity));
+  var windSpeed = ((response.wind.speed));
+  var citySearch = ((response.name));
+  var latitute = ((response.coord.lat));
+  var longitude = ((response.coord.lon));
+  var forecast = "api.openweathermap.org/data/2.5/forecast?q=" + cityName + "&appid=da9420b87d29698294d717ff1b782d01"
+  // var currentTime = moment();
+  // var uvIndex = "http://api.openweathermap.org/data/2.5/uvi?lat="+ lat"&lon=" + lon "&appid=da9420b87d29698294d717ff1b782d01";
+  // var uvIndex= "http://api.openweathermap.org/data/2.5/uvi?lat=" + lat + "&lon=" + lon + "&appid=da9420b87d29698294d717ff1b782d01"
+  $("#dispText").text(citySearch);
+  $("#tempDisp").text("Temperature: "+ temperature);
+  $("#humDisp").text("Humidity: " +humid +"%");
+  $("#windDisp").text("Wind speed: " +windSpeed +"mph");
+  // $("#uvDisp").text("UV Index: "+ uvIndex);
+
+  console.log(forecast);
   })
-    // Place results into designated HTML element
+}
+$("#cityName").append()
+$(".searchBtn").click(function (){
+  var searchCity = $(".userText").val();
+  oneDay(searchCity);
+  console.log(searchCity);
+  cityArray.push(searchCity);
+  localStorage.setItem('savedCity', cityArray);
+  for (var i=0; i < cityArray.length; i++){
+    var saveCity = ("<li>").searchCity;
+    $("#savedCities").append(saveCity);
+  }
+  
+})
 
-// function weatherBalloon( cityID ) {
-//   var key = '{da9420b87d29698294d717ff1b782d01}';
-//   fetch('https://api.openweathermap.org/data/2.5/weather?id=' + Seattle + '&appid=' + key)  
-//   .then(function(resp) { return resp.json() }) // Convert data to json
-//   .then(function(data) {
-//     console.log(data);
-//   })
-//   .catch(function() {
-//     // catch any errors
-//   });
-// }
-
-// window.onload = function() {
-//   weatherBallon( Seattle );
